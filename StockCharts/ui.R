@@ -2,19 +2,24 @@ library(shiny)
 
 shinyUI(fluidPage(
   
-  titlePanel("Old Faithful Geyser Data"),
+  titlePanel("Candlestick Stock Charts"),
   
   sidebarLayout(
     sidebarPanel(
-       sliderInput("bins",
-                   "Number of bins:",
-                   min = 1,
-                   max = 50,
-                   value = 30)
+       radioButtons("stocks",
+                   "Stocks",
+                   c("Apple" = "AAPL",
+                     "Facebook" = "FB",
+                     "Microsoft" = "MSFT")),
+       checkboxInput("moveAvg",
+                     "Moving Averages",
+                     c("20-day" = "twentyAvg",
+                       "50-day" = "fiftyAvg", 
+                       "200-day" = "twohundAvg"))
     ),
     
     mainPanel(
-       plotOutput("distPlot")
+       plotOutput("candleStick")
     )
   )
 ))
