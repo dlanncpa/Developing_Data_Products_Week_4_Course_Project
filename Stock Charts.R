@@ -9,6 +9,7 @@ getSymbols(c("AAPL", "FB", "MSFT"), src = "yahoo", from = startDate, to = endDat
 stocks<-as.xts(data.frame(AAPL = AAPL[, "AAPL.Close"], FB = FB[, "FB.Close"], MSFT = MSFT[, "MSFT.Close"]))
 
 head(stocks)
+summary(stocks)
 str(stocks)
 
 candleChart(AAPL, up.col = "black", dn.col = "red", theme = "white", subset = "2019-01-01/")

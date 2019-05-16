@@ -6,12 +6,12 @@ shinyUI(fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-       radioButtons("stocks",
+       radioButtons("radioStocks",
                    "Stocks",
                    c("Apple" = "AAPL",
                      "Facebook" = "FB",
                      "Microsoft" = "MSFT")),
-       checkboxInput("moveAvg",
+       checkboxInput("checkboxMoveAvg",
                      "Moving Averages",
                      c("20-day" = "twentyAvg",
                        "50-day" = "fiftyAvg", 
