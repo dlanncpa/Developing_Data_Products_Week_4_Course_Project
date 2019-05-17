@@ -11,15 +11,17 @@ shinyUI(fluidPage(
                    c("Apple" = "AAPL",
                      "Facebook" = "FB",
                      "Microsoft" = "MSFT")),
-       checkboxInput("checkboxMoveAvg",
+       radioButtons("radioMoveAvg",
                      "Moving Averages",
-                     c("20-day" = "twentyAvg",
-                       "50-day" = "fiftyAvg", 
-                       "200-day" = "twohundAvg"))
+                     c("20-day" == 20,
+                       "50-day" == 50, 
+                       "200-day" == 200))
     ),
     
     mainPanel(
-       plotOutput("candleStick")
+       conditionalPanel(condition = "input.radioStocks == 'AAPL'", plotOutput(outputId = "plotAAPL")),
+       conditionalPanel(condition = "input.radioStocks == 'FB'", plotOutput(outputId = "plotFB")),
+       conditionalPanel(condition = "input.radioStocks == 'MSFT'", plotOutput(outputId = "plotMSFT"))
     )
   )
 ))

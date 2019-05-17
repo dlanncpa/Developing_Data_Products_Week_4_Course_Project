@@ -2,28 +2,35 @@ library(shiny)
 library(quantmod)
 library(lubridate)
 
+startDate<-Sys.Date()-years(2)
+endDate<-Sys.Date()
+
+getSymbols(c("AAPL", "FB", "MSFT"), src = "yahoo", from = startDate, to = endDate)
+
+stocks<-as.xts(data.frame(AAPL = AAPL[, "AAPL.Close"], FB = FB[, "FB.Close"], MSFT = MSFT[, "MSFT.Close"]))
+
 shinyServer(function(input, output) {
-  stockChoice<-reactive({
-      stockInput<-input$radioStocks
-      
-      startDate<-Sys.Date()-years(2)
-      endDate<-Sys.Date()
-      
-      getSymbols(c("AAPL", "FB", "MSFT"), src = "yahoo", from = startDate, to = endDate)
-      
-      stocks<-as.xts(data.frame(AAPL = AAPL[, "AAPL.Close"], FB = FB[, "FB.Close"], MSFT = MSFT[, "MSFT.Close"]))
-  })
+  cs<-candleChart(input$radioStocks, up.col = "black", dn.col = "red", theme = "white", subset = "2019-01-01/")
   
-  moveAvgChoice<-reactive({
-      moveAvgInput<-input$checkboxMoveAvg
-      twentyAvg<-addSMA(n = 20, col = "green")
-      fiftyAvg<-addSMA(n = 50, col = "blue")
-      twohundAvg<-addSMA(n = 200, col = "pink")
+  movAvg<-addSMA(n = input$radioMoveAvg)
+
+  output$plotAAPL <- renderPlot({
+      cs
+      if(input$radioMoveAvg){
+          movAvg
+      }
+  })
+  output$plotFB <- renderPlot({
+      cs
+      if(input$radioMoveAvg){
+          movAvg
+      }
+  })
+  output$plotMSFT <- renderPlot({
+      cs
+      if(input$radioMoveAvg){
+          movAvg
+      }
   })
 
-  output$candleStick <- renderPlot({
-      candleChart(stockInput(), up.col = "black", dn.col = "red", theme = "white", subset = "2019-01-01/")
-      
-  })
-  
 })
