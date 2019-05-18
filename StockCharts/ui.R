@@ -13,9 +13,9 @@ shinyUI(fluidPage(
                      "Microsoft" = "MSFT")),
        radioButtons("radioMoveAvg",
                      "Moving Averages",
-                     c("20-day" == 20,
-                       "50-day" == 50, 
-                       "200-day" == 200))
+                     c("20-day" = "twentyAvg",
+                       "50-day" = "fiftyAvg", 
+                       "200-day" = "twohundAvg"))
     ),
     
     mainPanel(
