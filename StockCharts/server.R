@@ -16,32 +16,32 @@ shinyServer(function(input, output) {
 
     output$plotAAPL <- renderPlot({
       cs
-      if(input$radioMoveAvg="twentyAvg"){
-          addSMA(n = 20, col = "green")
-      } else if(input$radioMoveAvg="fiftyAvg") {
-          addSMA(n = 50, col = "blue")
+      if(input$radioMoveAvg=="twentyAvg"){
+          SMA(AAPL[, "AAPL.Close"], n = 20, col = "green")
+      } else if(input$radioMoveAvg=="fiftyAvg") {
+          SMA(AAPL[, "AAPL.Close"], n = 50, col = "blue")
       } else {
-          addSMA(n = 200, col = "pink")
+          SMA(AAPL[, "AAPL.Close"], n = 200, col = "pink")
       }
   })
   output$plotFB <- renderPlot({
       cs
-      if(input$radioMoveAvg="twentyAvg"){
-          addSMA(n = 20, col = "green")
-      } else if(input$radioMoveAvg="fiftyAvg") {
-          addSMA(n = 50, col = "blue")
+      if(input$radioMoveAvg=="twentyAvg"){
+          SMA(FB[, "FB.Close"], n = 20, col = "green")
+      } else if(input$radioMoveAvg=="fiftyAvg") {
+          SMA(FB[, "FB.Close"], n = 50, col = "blue")
       } else {
-          addSMA(n = 200, col = "pink")
+          SMA(FB[, "FB.Close"], n = 200, col = "pink")
       }
   })
   output$plotMSFT <- renderPlot({
       cs
-      if(input$radioMoveAvg="twentyAvg"){
-          addSMA(n = 20, col = "green")
-      } else if(input$radioMoveAvg="fiftyAvg") {
-          addSMA(n = 50, col = "blue")
+      if(input$radioMoveAvg=="twentyAvg"){
+          SMA(MSFT[, "MSFT.Close"], n = 20, col = "green")
+      } else if(input$radioMoveAvg=="fiftyAvg") {
+          SMA(MSFT[, "MSFT.Close"], n = 50, col = "blue")
       } else {
-          addSMA(n = 200, col = "pink")
+          SMA(MSFT[, "MSFT.Close"], n = 200, col = "pink")
       }
   })
 
