@@ -19,9 +19,7 @@ shinyUI(fluidPage(
     ),
     
     mainPanel(
-       conditionalPanel(condition = "input.radioStocks == 'AAPL'", plotOutput(outputId = "plotAAPL")),
-       conditionalPanel(condition = "input.radioStocks == 'FB'", plotOutput(outputId = "plotFB")),
-       conditionalPanel(condition = "input.radioStocks == 'MSFT'", plotOutput(outputId = "plotMSFT"))
+       plotOutput("candleStick")
     )
   )
 ))

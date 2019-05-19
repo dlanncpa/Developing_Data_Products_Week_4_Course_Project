@@ -14,7 +14,7 @@ shinyServer(function(input, output) {
       candleChart(input$radioStocks, up.col = "black", dn.col = "red", theme = "white", subset = "2019-01-01/")
   })
 
-    output$plotAAPL <- renderPlot({
+    output$candleStick <- renderPlot({
       cs
       if(input$radioMoveAvg=="twentyAvg"){
           SMA(AAPL[, "AAPL.Close"], n = 20, col = "green")
@@ -22,26 +22,6 @@ shinyServer(function(input, output) {
           SMA(AAPL[, "AAPL.Close"], n = 50, col = "blue")
       } else {
           SMA(AAPL[, "AAPL.Close"], n = 200, col = "pink")
-      }
-  })
-  output$plotFB <- renderPlot({
-      cs
-      if(input$radioMoveAvg=="twentyAvg"){
-          SMA(FB[, "FB.Close"], n = 20, col = "green")
-      } else if(input$radioMoveAvg=="fiftyAvg") {
-          SMA(FB[, "FB.Close"], n = 50, col = "blue")
-      } else {
-          SMA(FB[, "FB.Close"], n = 200, col = "pink")
-      }
-  })
-  output$plotMSFT <- renderPlot({
-      cs
-      if(input$radioMoveAvg=="twentyAvg"){
-          SMA(MSFT[, "MSFT.Close"], n = 20, col = "green")
-      } else if(input$radioMoveAvg=="fiftyAvg") {
-          SMA(MSFT[, "MSFT.Close"], n = 50, col = "blue")
-      } else {
-          SMA(MSFT[, "MSFT.Close"], n = 200, col = "pink")
       }
   })
 
