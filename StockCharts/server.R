@@ -6,7 +6,7 @@ shinyServer(function(input, output) {
         getSymbols(input$symb,
                    src = "yahoo",
                    from = "2014-01-01",
-                   auto.assign = FALSE)[, 4]
+                   auto.assign = FALSE)
         
     })
     
@@ -23,7 +23,7 @@ shinyServer(function(input, output) {
     })
 
     output$candleStick <- renderPlot({
-        candleChart(dataInput(), up.col = "black", dn.col = "red", theme = "white", subset = "2019-01-01/")
+        candleChart(dataInput(), name = input$symb, up.col = "black", dn.col = "red", theme = "white", subset = "2019-01-01/")
         moveAvg()
     })
 })
