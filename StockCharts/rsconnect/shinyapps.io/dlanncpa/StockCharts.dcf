@@ -1,0 +1,12 @@
+name: StockCharts
+title: StockCharts
+username:
+account: dlanncpa
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 946324
+bundleId: 2104764
+url: https://dlanncpa.shinyapps.io/StockCharts/
+when: 1558642567.80786
+asMultiple: FALSE
+asStatic: FALSE

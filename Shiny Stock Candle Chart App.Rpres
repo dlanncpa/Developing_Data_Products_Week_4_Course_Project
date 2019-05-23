@@ -51,6 +51,6 @@ addSMA(n = 200, col = "pink")
 The App and Supporting Documentation
 ========================================================
 
-The app is located at
+The app is located at https://dlanncpa.shinyapps.io/StockCharts/.
 
-The supporting documentation is located at [](https://github.com/dlanncpa/Developing_Data_Products_Week_4_Course_Project).
+The supporting documentation is located at https://github.com/dlanncpa/Developing_Data_Products_Week_4_Course_Project.
